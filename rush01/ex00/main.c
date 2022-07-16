@@ -15,9 +15,11 @@
 int main (int argc, char **argv)
 {
 	// atoi(argv[])
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char    tab[size][size];
 
+	tab = malloc(argc);
 	i = -1; // car on incremente des qu'on entre dans la boucle donc sinon on commencerai par i = 1.
 	while (i*i <= argc) // car un tableau ne marche que si il a le meme nombre de cases en ligne que en colonne donc on check
 	{
@@ -37,5 +39,6 @@ int main (int argc, char **argv)
 			j++;
 		}
 	}
+	free(tab);
 	return 0;
 }

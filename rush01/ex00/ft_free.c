@@ -1,0 +1,1 @@
+// free la memoire alllouee par malloc

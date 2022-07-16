@@ -28,13 +28,14 @@ int main (int argc, char **argv)
 			write(1, "ERROR", 5);
 	}
 	j = 0;
-	while (j < argc) /*argv prend en compte les espaces!! donc il 
-	faut diviser par deux. Le deuxieme argument (donc argv[1]) compte
-	comme une seule longue string. Ou juste je rajoute un if (si c'est une 
-	valeur numerique) mai du coup faut qd meme diviser argc par deux non?*/
+	while (j < argc) /* argv prend en compte les espaces!! Le deuxieme argument (donc argv[1]) compte
+	comme une seule longue string. Donc on rajoute un if */
 	{
-		ft_strcmp(argc, argv[j], i);
-		j++;
+		if (j >= '0' && j <= '9')
+		{
+			ft_strcmp(argc, argv[j], i);
+			j++;
+		}
 	}
 	return 0;
 }

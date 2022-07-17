@@ -22,30 +22,87 @@ de correspondre aux deux conditions, on fait du backtracking : on remonte a la l
 du dessus et on la permute.
 */
 
- bool duplicate_condition(int tab[size][size], int row, int col, int num)
- {
-    int x;
-    x = 0;
-    // on cherche si on trouve le meme num sur la file
-    while(x < size)
+void    ft_set_nb(int *tab, int x, int y, int i)
+{
+    x = 1; // car on exclue les colonnes de l'outline
+    y = 1;
+    while (x < size) // on remplit le tableau des numeros en ordre croissant
     {
-        if (tab[row][x] == num)
+        tab[x][0] = x;
+        x++;
+    }
+    ft_strcmp(tab, x, y, i);
+}
+
+void    ft_strcmp(int *tab, int x, int y, int i)
+{
+    x = 0;
+    y = 0;
+    while (tab[x][0] && tab[0][y])
+    {
+        ft_duplicate_condition(tab, x, y);
+        if (false)
+        {
+            while (false)
+            {
+                ft_swap(tab, x, y, i);
+                ft_duplicate_condition(tab, x, y);
+            }
+            if (false)
+            {
+                ft_swap(tab, x - 1, y - 1, i); // backtracking. Poineurs?
+                ft_strcmp(tab, x, y);
+            }
+            if (true)
+            {
+                ft_outline_condition(tab, x, y);
+                if (false)
+                {
+                    while (false)
+                    {
+                        ft_swap(tab, x, y, i);
+                        ft_outline_condition(tab, x, y);
+                    }
+                    if (false)
+                    {
+                        ft_swap(tab, x - 1, y - 1, i); // backtracking. Pointeurs?
+                        ft_strcmp(tab, x, y);
+                    }
+                    if (true)
+                        ft_set_nb(tab, x + 1, y + 1);
+                }
+            }
+        }
+    }
+    ft_print(tab, x, y, i);
+}
+
+void   ft_duplicate_condition(int *tab, int x, int y)
+ {
+    // on cherche si on trouve le meme num sur la file
+        if (tab[x][0] == x)
             return (false);
-        if (tab[x][col] == num)
+        if else (tab[0][y] == y)
             return (false);
         else
             return (true);
-    }
  }
 
-bool outline_condition(int tab[size][size], int row, int col)
+void    ft_outline_condition(int *tab, int x, int y)
 {
-    int x;
-    x = 0;
     // on cherche si ca correspond aux conditions de point de vue
-    while(x < size)
+    x = 0;
+    y = 0;
+    /*while (tab[x][0] && tab[0][y]) // ou x <= i && y <= i 
     {
-        /* (tout le lonc c'est tab[i][0] ou tab[0][i] parce qu'on parle de l'outline)
+        if (tab[x+1]  tab[x][0]) // ???
+
+    }*/
+}
+
+void    ft_swap(int *tab, int x, int y, int i)
+{
+/*
         - si le chiffre en tab[x][x] = size (= si c'est le plus grand numero possible) alors on doit assigner 
         a col[1] (faire un i = 0 puis i + 1) la plus petite valeur possible, c'est a dire 1.
 

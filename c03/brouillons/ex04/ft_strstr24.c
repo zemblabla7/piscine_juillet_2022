@@ -24,11 +24,17 @@ char	*ft_strstr(char *str, char *to_find)
 	while (str[i])
 	{
 		j = 0;
-		while (str[i + j] == to_find[j] && to_find[j] != '\0')
-			j++;
-		if (to_find[j] == '\0')
-			return (&str[i]);
-	i++;
+		if (str[i] == to_find[j])
+		{
+			while (str[i + j] == to_find[j] && to_find[i + j] != '\0')
+			{
+				j++;
+				if (to_find[j] =='\0')
+					return (&str[i]);
+			}
+			i++;
+		}
+		i++;
 	}
 	return (0);
 }

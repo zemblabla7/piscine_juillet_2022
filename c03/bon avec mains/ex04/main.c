@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include "ft_strstr.c"
 #include <string.h>
+#include "ft_strstr.c"
 
 int main ()
 {
-    char string[100] = "bo ca ta";
-    char mot_recherche[] = "ca";
-    printf("%s", ft_strstr(string, mot_recherche));
-    //printf("%s", strstr(string, mot_recherche));
+    char string[100] = "bocata patatas comida";
+    char mot_recherche[] = "patata";
+    printf("%s\n", ft_strstr(string, mot_recherche));
+    printf("%s", strstr(string, mot_recherche));
     return (0);
 }

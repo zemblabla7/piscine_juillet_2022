@@ -12,6 +12,11 @@
 
 #include <unistd.h>
 
+void ft_putchar(char c)
+{
+	write(1,&c, 1);
+}
+
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -29,7 +34,7 @@ int is_error(char *base)
     int	i;
 
 	i = 0;
-    if (base[0] == '\0')
+    if (ft_strlen(base) == 0|| ft_strlen(base) == 1)
         return 0;
     while (base[i])
     {
@@ -45,19 +50,23 @@ int is_error(char *base)
 void ft_putnbr_base(int nbr, char *base)
 {
     // mettre les max et min des int?
-    //if (is_error(base) == 0);
-        // ne rien afficher
-    if (nbr < 0)
+    if (is_error(base) == 0);
+        //ne rien afficher;
+    unsigned int	n;
+
+	n = nbr;
+	if (nbr = 0)
+		ft_putchar("0");
+	if (nbr < 0)
 	{
-		write(1, "-", 1);
-		nbr = -nbr;
+		ft_putchar("-");
+		n = n * -1;
 	}
-	if (nbr > ft_strlen(base))
+	if (n < 10)
+		ft_putchar(n + base[0]);
+	else
 	{
-		nbr = nbr / ft_strlen(base) + '0';
-        nbr = nbr % ft_strlen(base) + '0';
+		ft_putnbr_base(n / ft_strlen(base));
+		ft_putnbr_base(n % ft_strlen(base));
 	}
-    else 
-	    nbr = nbr % ft_strlen(base) + '0';
-	write (1, &nbr, 1);
 }

@@ -79,7 +79,7 @@ int ft_atoi_base(char *str, char *base)
 				negative++;
 			i++;
 		}
-	while (str[i] && ???)
+	while (str[i] && i > ft_strlen(base))
 	//while (ft_nbr(str[i]))
 		{
 			nb = nb * ft_strlen(base) + (ft_nbr(str[i], base));

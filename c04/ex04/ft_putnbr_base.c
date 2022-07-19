@@ -52,21 +52,19 @@ void ft_putnbr_base(int nbr, char *base)
     // mettre les max et min des int?
     if (is_error(base) == 0);
         //ne rien afficher;
-    unsigned int	n;
-
-	n = nbr;
 	if (nbr = 0)
-		ft_putchar("0");
+		ft_putchar('0');
 	if (nbr < 0)
 	{
-		ft_putchar("-");
-		n = n * -1;
+		ft_putchar('-');
+		nbr = nbr * -1;
 	}
-	if (n < 10)
-		ft_putchar(n + base[0]);
+	if (nbr < ft_strlen(base))
+		//ft_putchar(nbr + base[0]);
+		ft_putchar(base[nbr % ft_strlen(base)]);
 	else
 	{
-		ft_putnbr_base(n / ft_strlen(base));
-		ft_putnbr_base(n % ft_strlen(base));
+		ft_putnbr_base(nbr / ft_strlen(base), base);
+		ft_putnbr_base(nbr % ft_strlen(base), base);
 	}
 }

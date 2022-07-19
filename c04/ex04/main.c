@@ -5,7 +5,7 @@
 
 int main () 
 {
-    int nb = 9;
+    int nb = 95876;
 
     char base_binaire[] = "01";
     char base_hexadecimale[] = "0123456789ABCDEF";

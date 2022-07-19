@@ -70,7 +70,7 @@ int ft_atoi_base(char *str, char *base)
 	nb = 0;
 	negative = 0;
 	if (is_error(base) == 0)
-			return 0; //ne rien afficher 
+			return 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)) 
 			i++;
 	while (str[i] == '+' || str[i] == '-')
@@ -79,7 +79,7 @@ int ft_atoi_base(char *str, char *base)
 				negative++;
 			i++;
 		}
-	while (str[i] && ??)
+	while (str[i] && ???)
 	//while (ft_nbr(str[i]))
 		{
 			nb = nb * ft_strlen(base) + (ft_nbr(str[i], base));

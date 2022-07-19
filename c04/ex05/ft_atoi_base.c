@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: casomarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 14:15:04 by casomarr          #+#    #+#             */
-/*   Updated: 2022/07/18 14:15:06 by casomarr         ###   ########.fr       */
+/*   Created: 2022/07/19 13:18:57 by casomarr          #+#    #+#             */
+/*   Updated: 2022/07/19 13:19:01 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,41 @@ int is_error(char *base)
 	return 0;
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+/*int ft_nbr(char c, char *base)
 {
-	if (is_error(base) == 0)
-		return; //ne rien afficher;
-	if (nbr == 0)
-		ft_putchar(base[nbr]);
-	if (nbr < 0)
-	{
-		ft_putchar('-');
-		nbr = nbr * -1;
-	}
-	if (nbr < ft_strlen(base) && nbr > 0)
-		ft_putchar(base[nbr]);
-	if (nbr > ft_strlen(base))
-	{
-		ft_putnbr_base(nbr / ft_strlen(base), base);
-		ft_putchar(base[nbr % ft_strlen(base)]);
-	}
+    int     i;
+    i = 0;
+    while (base[i] && base[i] != c)
+        i++;
+    return (i);
+}*/
+
+int ft_atoi_base(char *str, char *base)
+{
+	int     i;
+    int     nb;
+    int     negative;
+
+    i = 0;
+    nb = 0;
+    negative = 0;
+    if (is_error(base) == 0)
+            return 0; //ne rien afficher 
+    while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)) 
+            i++;
+    while (str[i] == '+' || str[i] == '-')
+        {
+            if (str[i] == '-')
+                negative++;
+            i++;
+        }
+    while (str[i] >= '0' && str[i] <= '9')
+        {
+            //nb = nb * ft_strlen(base) + (ft_nbr(str[i], base));
+            nb = nb * ft_strlen(base) + str[i] - base[0];
+            i++;
+        }
+    if (negative % 2 != 0)
+        nb = nb * (-1);
+    return (nb);
 }

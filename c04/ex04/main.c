@@ -8,7 +8,7 @@ int main ()
     int nb = 95876;
     //int nb = 0;
 
-    char base_binaire[] = "01";
+    char base_binaire[] = "01"; // ou 01
     char base_hexadecimale[] = "0123456789ABCDEF";
     char base_octale[] = "poneyvif";
     char base_decimale[] = "0123456789";

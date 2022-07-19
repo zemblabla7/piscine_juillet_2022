@@ -38,6 +38,8 @@ int is_error(char *base)
 		return 0;
 	while (base[i])
 	{
+		if (base[i] == ' ' || (base[i] >= 9 && base[i] <= 13))
+			return 0;
 		if (base[i] == '+' || base[i] == '-')
 			return 0;
 		if (base[i] == base[i+ 1])
@@ -49,41 +51,42 @@ int is_error(char *base)
 	return 0;
 }
 
-/*int ft_nbr(char c, char *base)
+int ft_nbr(char c, char *base)
 {
-    int     i;
-    i = 0;
-    while (base[i] && base[i] != c)
-        i++;
-    return (i);
-}*/
+	int     i;
+	i = 0;
+	while (base[i] && base[i] != c)
+		i++;
+	return (i);
+}
 
 int ft_atoi_base(char *str, char *base)
 {
 	int     i;
-    int     nb;
-    int     negative;
+	int     nb;
+	int     negative;
 
-    i = 0;
-    nb = 0;
-    negative = 0;
-    if (is_error(base) == 0)
-            return 0; //ne rien afficher 
-    while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)) 
-            i++;
-    while (str[i] == '+' || str[i] == '-')
-        {
-            if (str[i] == '-')
-                negative++;
-            i++;
-        }
-    while (str[i] >= '0' && str[i] <= '9')
-        {
-            //nb = nb * ft_strlen(base) + (ft_nbr(str[i], base));
-            nb = nb * ft_strlen(base) + str[i] - base[0];
-            i++;
-        }
-    if (negative % 2 != 0)
-        nb = nb * (-1);
-    return (nb);
+	i = 0;
+	nb = 0;
+	negative = 0;
+	if (is_error(base) == 0)
+			return 0; //ne rien afficher 
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)) 
+			i++;
+	while (str[i] == '+' || str[i] == '-')
+		{
+			if (str[i] == '-')
+				negative++;
+			i++;
+		}
+	while (str[i] && ??)
+	//while (ft_nbr(str[i]))
+		{
+			nb = nb * ft_strlen(base) + (ft_nbr(str[i], base));
+			//nb = nb * ft_strlen(base) + str[i] - base[0];
+			i++;
+		}
+	if (negative % 2 != 0)
+		nb = nb * (-1);
+	return (nb);
 }

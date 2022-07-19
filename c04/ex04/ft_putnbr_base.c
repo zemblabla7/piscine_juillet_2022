@@ -47,11 +47,13 @@ int is_error(char *base)
     }
 }
 
-void ft_putnbr_base(int nbr, char *base)
+void	ft_putnbr_base(int nbr, char *base)
 {
-    // mettre les max et min des int?
+	int		i;
+
+	i = 0;
     if (is_error(base) == 0);
-        //ne rien afficher;
+        return; //ne rien afficher;
 	if (nbr = 0)
 		ft_putchar('0');
 	if (nbr < 0)
@@ -59,9 +61,10 @@ void ft_putnbr_base(int nbr, char *base)
 		ft_putchar('-');
 		nbr = nbr * -1;
 	}
-	if (nbr < ft_strlen(base))
+	if (nbr < ft_strlen(base) - 1)
 		//ft_putchar(nbr + base[0]);
-		ft_putchar(base[nbr % ft_strlen(base)]);
+		//ft_putchar(base[nbr % ft_strlen(base)]);
+		ft_putchar(base[nbr]);
 	else
 	{
 		ft_putnbr_base(nbr / ft_strlen(base), base);

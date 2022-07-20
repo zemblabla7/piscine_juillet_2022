@@ -6,7 +6,7 @@
 /*   By: casomarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:18:57 by casomarr          #+#    #+#             */
-/*   Updated: 2022/07/19 13:19:01 by casomarr         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:01:06 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int is_error(char *base)
 	int	i;
 
 	i = 0;
-	if (ft_strlen(base) == 0|| ft_strlen(base) == 1)
+	if (ft_strlen(base) == 0 || ft_strlen(base) == 1)
 		return 0;
 	while (base[i])
 	{
@@ -42,7 +42,7 @@ int is_error(char *base)
 			return 0;
 		if (base[i] == '+' || base[i] == '-')
 			return 0;
-		if (base[i] == base[i+ 1])
+		if (base[i] == base[i + 1])
 			return 0;
 		else
 			return 1;

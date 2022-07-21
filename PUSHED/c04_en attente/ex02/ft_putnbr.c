@@ -20,20 +20,18 @@ void	ft_putchar(char c)
 void	ft_putnbr(int nb)
 {
 	unsigned int	n;
-
+	
 	n = nb;
-	if (nb == 0)
-		ft_putchar('0');
 	if (nb < 0)
 	{
 		ft_putchar('-');
-		n = n * -1;
+		n = -n;
 	}
-	if (n < 10)
+	if (nb >= 0 && nb < 10)
 		ft_putchar(n + '0');
 	else
 	{
 		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		ft_putchar(n % 10 + '0');
 	}
 }

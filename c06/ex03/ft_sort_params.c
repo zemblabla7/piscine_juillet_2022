@@ -61,13 +61,15 @@ int main (int argc, char **argv)
     int     i;
 
     i = 1;
-	if (argc > 1)
+	if (argc >= 1)
     {
-        while (argv[i])
-        {   
-            ft_swap(argc, argv[i]);
+        while (i < argc)
+        {
+		    ft_swap(argc, argv[i]);
             i++;
         }
     }
 	return (0);
 }
+
+// EXO PAS FINI!!!!!!

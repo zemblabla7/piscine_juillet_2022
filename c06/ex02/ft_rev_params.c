@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 
-char	ft_rev_params(char *param)
+void	ft_rev_params(char *param)
 {
 	int i;
 
@@ -23,12 +23,11 @@ char	ft_rev_params(char *param)
 		i++;
 	}
     write(1, "\n", 1);
-    return(*param); // pas sure mais il faut bien return un char
 }
 
 int main (int argc, char **argv)
 {
-    int     i;
+   int     i;
 
     i = argc - 1;
 	if (argc > 1)

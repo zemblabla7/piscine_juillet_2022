@@ -12,11 +12,6 @@
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -29,7 +24,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	is_error(char *base)
+int	is_error1(char *base)
 {
 	int	i;
 
@@ -42,13 +37,29 @@ int	is_error(char *base)
 			return (0);
 		if (base[i] == '+' || base[i] == '-')
 			return (0);
-		if (base[i] == base[i + 1])
-			return (0);
-		else
-			return (1);
 		i++;
 	}
-	return (0);
+	return (1);
+}
+
+int	is_error2(char *base)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (base[i])
+	{
+		j = 0;
+		while (base[i + j] != base[j])
+		{
+			j++;
+			if (base[i + j] == base[j])
+				return (0);
+		}
+		i++;
+	}
+	return (1);
 }
 
 int	ft_nbr(char c, char *base)
@@ -63,14 +74,14 @@ int	ft_nbr(char c, char *base)
 
 int	ft_atoi_base(char *str, char *base)
 {
-	int	i;
-	int	nb;
-	int	negative;
+	unsigned int	i;
+	unsigned int	negative;
+	unsigned int	nb;
 
 	i = 0;
 	nb = 0;
 	negative = 0;
-	if (is_error(base) == 0)
+	if (is_error1(base) == 0 || is_error2(base) == 0)
 		return (0);
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 			i++;

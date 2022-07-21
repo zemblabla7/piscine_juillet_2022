@@ -1,28 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: casomarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 17:57:04 by casomarr          #+#    #+#             */
-/*   Updated: 2022/07/20 17:57:19 by casomarr         ###   ########.fr       */
+/*   Created: 2022/07/21 19:25:57 by casomarr          #+#    #+#             */
+/*   Updated: 2022/07/21 19:33:22 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
+char *ft_strdup(char *src)
 {
-	int	i;
-	int	j;
 
-	if (nb <= 0)
-		return (0);
-	i = 1;
-	j = 1;
-	while (i <= nb)
-	{
-		j = j * i;
-		i++;
-	}
-	return (j);
+    
 }

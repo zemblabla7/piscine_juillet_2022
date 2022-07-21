@@ -32,6 +32,7 @@ int	ft_strlen(char *str)
 int	is_error(char *base)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	if (ft_strlen(base) == 0 || ft_strlen(base) == 1)
@@ -40,13 +41,21 @@ int	is_error(char *base)
 	{
 		if (base[i] == '+' || base[i] == '-')
 			return (0);
-		if (base[i] == base[i + 1])
-			return (0);
-		else
-			return (1);
 		i++;
 	}
-	return (0);
+	i = 0;
+	while (base[i])
+	{
+		j = 0;
+		while (base[i + j] != base[j])
+		{
+			j++;
+			if (base[i + j] == base[j])
+				return (0);
+		}
+		i++;
+	}
+	return (1);
 }
 
 void	ft_putnbr_base(int nbr, char *base)

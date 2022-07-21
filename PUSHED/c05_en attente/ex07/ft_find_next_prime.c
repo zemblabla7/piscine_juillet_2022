@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: casomarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 12:18:13 by casomarr          #+#    #+#             */
-/*   Updated: 2022/07/21 12:18:16 by casomarr         ###   ########.fr       */
+/*   Created: 2022/07/20 18:00:45 by casomarr          #+#    #+#             */
+/*   Updated: 2022/07/20 18:00:48 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_print_params(char *param)
+int	ft_is_prime(int nb)
 {
-	int i;
+	long long	i;
 
-	i = 0;
-	while (param[i] != '\0')
+	i = 2;
+	if (nb < 2)
+		return (2);
+	while (i * i <= nb)
 	{
-		write(1, &param[i], 1);
+		if ((nb % i) == 0)
+		{
+			return (0);
+		}
 		i++;
 	}
-    write(1, "\n", 1);
+	return (1);
 }
 
-int main (int argc, char **argv)
+int	ft_find_next_prime(int nb)
 {
-    int     i;
-
-    i = 1;
-	if (argc >= 1)
-    {
-        while (i < argc)
-        {
-		    ft_print_params(argv[i]);
-            i++;
-        }
-    }
-	return (0);
+	while (ft_is_prime(nb) != 1)
+	{
+		nb++;
+	}
+	return (nb);
 }

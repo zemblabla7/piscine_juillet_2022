@@ -29,10 +29,9 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	is_error(char *base)
+int	is_error1(char *base)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	if (ft_strlen(base) == 0 || ft_strlen(base) == 1)
@@ -43,15 +42,23 @@ int	is_error(char *base)
 			return (0);
 		i++;
 	}
+	return (1);
+}
+
+int	is_error2(char *base)
+{
+	int	i;
+	int	j;
+
 	i = 0;
 	while (base[i])
 	{
-		j = 0;
-		while (base[i + j] != base[j])
+		j = i + 1;
+		while (j < ft_strlen(base))
 		{
-			j++;
-			if (base[i + j] == base[j])
+			if (base[i] == base[j])
 				return (0);
+			j++;
 		}
 		i++;
 	}
@@ -60,20 +67,21 @@ int	is_error(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	if (is_error(base) == 0)
-		return ;
-	if (nbr == 0)
-		ft_putchar(base[nbr]);
-	if (nbr < 0)
+	if (is_error1(base) != 0 || is_error2(base) != 0)
 	{
-		ft_putchar('-');
-		nbr = nbr * -1;
-	}
-	if (nbr < ft_strlen(base) && nbr > 0)
-		ft_putchar(base[nbr]);
-	if (nbr > ft_strlen(base))
-	{
-		ft_putnbr_base(nbr / ft_strlen(base), base);
-		ft_putchar(base[nbr % ft_strlen(base)]);
+		if (nbr == 0)
+			ft_putchar(base[nbr]);
+		if (nbr < 0)
+		{
+			ft_putchar('-');
+			nbr = nbr * -1;
+		}
+		if (nbr < ft_strlen(base) && nbr > 0)
+			ft_putchar(base[nbr]);
+		if (nbr > ft_strlen(base))
+		{
+			ft_putnbr_base(nbr / ft_strlen(base), base);
+			ft_putchar(base[nbr % ft_strlen(base)]);
+		}
 	}
 }

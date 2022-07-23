@@ -26,34 +26,52 @@ char	ft_rev_params(char *param)
     return(*param); // pas sure mais il faut bien return un char
 }
 
-char    ft_swap(int argc, char *argv)
+char    ft_swap(int argc, char *argv1, char *argv2)
 {
     int     i;
-    int     y;
-    char    *origin;
+    char    *origin1;
+    char    *origin2;
+    int     a;
+    int     b;
 
     i = 1;
-    while (i < argc)
+    while (argv1[i] || argv2[i])
     {
-        y = i + 1;
-        while (y < argc)
+        if (argv1[i] != argv2[i])
         {
-            if (argv[i] - '0' > argv[i + 1] - '0')
+            if (argv1[i] > argv2[i])
             {
-                origin[0]  = argv[i];
-                argv[i] = argv[y];
-                argv[y] = origin[0];
+                a = 0;
+                while (argv1[a])
+                {
+                    origin1[a] = argv1[a];
+                    a++;
+                }
+                a = 0;
+                while (argv2[a])
+                {
+                    origin2[a] = argv2[a];
+                    a++;
+                }
+                a = 0;
+                b = 0;
+                while (argv1[a] || argv2[b])
+                {
+                    argv1[a] = origin2[a];
+                    argv2[b] = origin1[b];
+                    a++;
+                    b++;
+                }
             }
-            y++;
         }
         i++;
     }
-    i = 1;
+    /*i = 1;
     while (argv[i])
     {   
-        ft_rev_params(argv[i]);
+        ft_rev_params(argv);
         i++;
-    }
+    }*/ // je ne peux envoyer dans la fonction d'affichage que les argv tries
 }
 
 int main (int argc, char **argv)
@@ -65,7 +83,7 @@ int main (int argc, char **argv)
     {
         while (i < argc)
         {
-		    ft_swap(argc, argv[i]);
+		    ft_swap(argc, argv[i], argv[i+1]);
             i++;
         }
     }

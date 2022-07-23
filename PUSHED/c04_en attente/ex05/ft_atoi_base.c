@@ -50,12 +50,12 @@ int	is_error2(char *base)
 	i = 0;
 	while (base[i])
 	{
-		j = 0;
-		while (base[i + j] != base[j])
+		j = i + 1;
+		while (j < ft_strlen(base))
 		{
-			j++;
-			if (base[i + j] == base[j])
+			if (base[i] == base[j])
 				return (0);
+			j++;
 		}
 		i++;
 	}
@@ -64,11 +64,15 @@ int	is_error2(char *base)
 
 int	ft_nbr(char c, char *base)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (base[i] && base[i] != c)
+	while (i < ft_strlen(base))
+	{
+		if (base[i] == c)
+			return (i);
 		i++;
+	}
 	return (i);
 }
 
@@ -93,7 +97,7 @@ int	ft_atoi_base(char *str, char *base)
 	}
 	while (str[i] && ft_nbr(str[i], base) < ft_strlen(base))
 	{
-		nb = nb * ft_strlen(base) + (ft_nbr(str[i], base));
+		nb = nb * ft_strlen(base) + ft_nbr(str[i], base);
 		i++;
 	}
 	if (negative % 2 != 0)

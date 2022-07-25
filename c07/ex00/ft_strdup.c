@@ -41,5 +41,4 @@ char *ft_strdup(char *src)
         i++;
     }
     return (&dest[0]);
-    free(src);
 }

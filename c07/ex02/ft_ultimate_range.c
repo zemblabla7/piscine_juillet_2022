@@ -36,7 +36,6 @@ int ft_ultimate_range(int **range, int min, int max)
         c++;
     }
     return (max - min);
-    free (range);
 }
 
 #include <stdio.h>

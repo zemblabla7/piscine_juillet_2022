@@ -33,5 +33,4 @@ int *ft_range(int min, int max)
         c++;
     }
     return (tab);
-    free (tab);
 }

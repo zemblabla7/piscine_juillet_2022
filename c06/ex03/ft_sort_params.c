@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 
-char	ft_rev_params(char *param)
+void	ft_putstr(char *param)
 {
 	int i;
 
@@ -23,10 +23,9 @@ char	ft_rev_params(char *param)
 		i++;
 	}
     write(1, "\n", 1);
-    return(*param); // pas sure mais il faut bien return un char
 }
 
-char    ft_swap(int argc, char *argv1, char *argv2)
+void    ft_sort_params(char *argv1, char *argv2)
 {
     int     i;
     char    *origin1;
@@ -34,7 +33,7 @@ char    ft_swap(int argc, char *argv1, char *argv2)
     int     a;
     int     b;
 
-    i = 1;
+    i = 0;
     while (argv1[i] || argv2[i])
     {
         if (argv1[i] != argv2[i])
@@ -62,16 +61,15 @@ char    ft_swap(int argc, char *argv1, char *argv2)
                     a++;
                     b++;
                 }
+                ft_putstr(argv2);
             }
+            if (argv1[i] < argv2[i])
+                ft_putstr(argv1);
+            else // donc si egaux
+                break ;
         }
         i++;
     }
-    /*i = 1;
-    while (argv[i])
-    {   
-        ft_rev_params(argv);
-        i++;
-    }*/ // je ne peux envoyer dans la fonction d'affichage que les argv tries
 }
 
 int main (int argc, char **argv)
@@ -79,15 +77,13 @@ int main (int argc, char **argv)
     int     i;
 
     i = 1;
-	if (argc >= 1)
+	if (argc > 2)
     {
         while (i < argc)
         {
-		    ft_swap(argc, argv[i], argv[i+1]);
+		    ft_sort_params(argv[i], argv[i+1]);
             i++;
         }
     }
 	return (0);
 }
-
-// EXO PAS FINI!!!!!!

@@ -13,35 +13,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int     ft_malloc(int size, char *sep)
-
-
-char *ft_strjoin(int size, char **strs, char *sep)
+char    *ft_strjoin(int size, char **strs, char *sep)
 {
-    if (size == 0)
-        return (NULL);
-
     int     i;
     int     j;
     int     c;
     char    *string;
 
-// MALLOC
+    if (size == 0)
+        return (NULL);
+
+ // MALLOC
     i = 1;
     c = 0;
-    while (strs[i])
+    while (strs[i]) // ou while (i < size) puisque size = nombre de chaines dans strs
     {
         j = 0;
         while (strs[i][j])
-            c++; 
+        {
+            c++;
+            j++;
+        }
         j = 0;
         while (sep[j] && i != (size - 1))
+        {
             c++;
+            j++;
+        }
         i++;
     }
-    string = malloc(sizeof(char) * c);
+    string = malloc(sizeof(char) * (c + 1)); // +1 pour le null byte \0
 
-// fonction
+ // fonction
     i = 1;
     c = 0;
     while (i < size)
@@ -56,13 +59,10 @@ char *ft_strjoin(int size, char **strs, char *sep)
     }
     string[c] = '\0';
     return (string);
-    free (string);
 }
 
 int	main(int argc, char **argv)  // EFFACER LE MAIN
 {
 	printf("success :\n");
 	printf("%s\n",  ft_strjoin(argc, argv, "___"));
-
-    // nico : on ne peut pas faire %s et la fonction, il faut printf ligne par ligne le tableau.
 }

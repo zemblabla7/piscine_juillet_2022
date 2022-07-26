@@ -1,6 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int ft_strlen(char *a)
+{
+    int i;
+    
+    i = 0;
+    while(a[i])
+        i++;
+    return (i);
+}
+
 char **ft_split(char *str, char *charset)
 {
     if (str[0] == '\0')
@@ -9,32 +19,63 @@ char **ft_split(char *str, char *charset)
     
     int     i;
     int     j;
-    char     *tab;
+    char     **tab;
     int     c;
+    int     l;
 
-    tab[0] = &str[0]; // verifier ce qu'il se passe qd ma string commence par un separateur.
-    c = 1;
+    // MALLOC
     j = 0;
-    //tab = malloc(sizeof(char) * )
+    c = 1;
     while (charset[j])
     {
         i = 0;
         while (str[i])
         {
             if (str[i] == charset[j])
-                //tab = malloc(sizeof(char) * c++);
-                tab[c++] = &str[i + 1];
+                c++;
             i++;
         }
         j++;
     }
+    tab = malloc(sizeof(char) * c);
+
+    //FONCTION
+    tab[0] = str[0]; // verifier ce qu'il se passe qd ma string commence par un separateur.
+    j = 0;
+    c = 1;
+    while (charset[j])
+    {
+        i = 0;
+        while (str[i])
+        {
+            if (str[i] == charset[j])
+            {
+                l = 0;
+                while (str[i + ft_strlen(charset)] != charset[j] || str[i + ft_strlen(charset)] != '\0') // ou tous les separateurs
+                {
+                    tab[c][l] = str[i + ft_strlen(charset)];
+                    i++;
+                    l++;
+                }
+            }
+            i++;
+            c++;
+        }
+        j++;
+    }
     tab[c] = '\0';
+
+    /*printf("%s", tab[0]);
+    printf("%s", tab[1]);
+    printf("%s", tab[2]);
+    printf("%s", tab[3]);*/
     return (&tab);
 }
 
 int main ()
 {
-    printf("%s", ft_split("carolina thibault,natan elise", ", ")); // le fait que la fonction soit un double pointeur change quelque chose?
+    ft_split("carolina thibault,natan elise", ", "); // le fait que la fonction soit un double pointeur change quelque chose?
+
     // TESTER AUSSI : 
     //qd deux séparateurs à la suite
     //quand charset vide
@@ -46,5 +87,4 @@ int main ()
 	printf("%s\n", tab);*/
 
     return 0;
-    // nico : on ne peut pas faire %s et la fonction, il faut printf ligne par ligne le tableau.
 }

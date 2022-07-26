@@ -23,6 +23,7 @@ void	ft_putstr(char *param)
 		i++;
 	}
     write(1, "\n", 1);
+    
 }
 
 void    ft_sort_params(char *argv1, char *argv2)

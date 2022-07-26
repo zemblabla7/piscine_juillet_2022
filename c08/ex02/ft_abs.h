@@ -6,14 +6,14 @@
 /*   By: casomarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:40:42 by casomarr          #+#    #+#             */
-/*   Updated: 2022/07/26 13:40:44 by casomarr         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:55:17 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ABS_H
 
-#define FT_ABS_H
+# define FT_ABS_H
 
-#define ABS(Value) (Value < 0) ? Value  : Value * (-1)
+# define ABS(Value) (Value < 0) ? Value  : Value * (-1)
 
 #endif

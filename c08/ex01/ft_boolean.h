@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ft_boolean.h
+#ifndef FT_BOOLEAN_H
 
-#define ft_boolean.h
+#define FT_BOOLEAN_H
 
 #include <unistd.h>
 #define     EVEN(nbr)   nbr % 2 = 0

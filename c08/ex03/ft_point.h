@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ft_point
+#ifndef FT_POINT
 
-#define ft_point
+#define FT_POINT
 
 
 /*struct t_point

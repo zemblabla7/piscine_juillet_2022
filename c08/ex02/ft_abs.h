@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ft_abs.h
+#ifndef FT_ABS_H
 
-#define ft_abs.h
+#define FT_ABS_H
 
-#define ABS(Value) (Value < 0) ? Value  = Value * (-1)
+#define ABS(Value) (Value < 0) ? Value  : Value * (-1)
 
 #endif

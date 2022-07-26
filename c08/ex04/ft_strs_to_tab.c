@@ -42,17 +42,41 @@ char	*ft_strcpy(char *src)
 
 struct s_stock_str *ft_strs_to_tab(int ac, char **av)
 {
-    t_stock_str     *param;
+    t_stock_str     *tab;
     int     i;
 
-    output = malloc(sizeof(t_stock_str) * (ac + 1));
+    tab = malloc(sizeof(t_stock_str) * (ac + 1));
+    if (tab == NULL)
+        return (NULL);
+    i = 0;
     while (i < ac)
     {
-        param[i].size = ft_strlen(av[i]);
-        param[i].str = av[i];
-        param[i].copy = ft_strcpy(av[i]);
+        tab[i].size = ft_strlen(av[i]);
+        tab[i].str = av[i];
+        tab[i].copy = ft_strcpy(av[i]);
+        i++;
     }
-    free(output);
+    tab[i].str = 0;
+    return (tab);
+    ft_print(tab);
+    free(tab);
+}
+
+void				ft_print(struct s_stock_str *param)
+{
+	int	i;
+
+	i = 0;
+	while (param[i].str)
+	{
+		ft_putstr(param[i].str); // j ai ni putrt ni putnbr mais plus de place trop de fonctions
+		ft_putstr("\n");
+		ft_putnbr(param[i].size);
+		ft_putstr("\n");
+		ft_putstr(param[i].copy);
+		ft_putstr("\n");
+		i++;
+	}
 }
 
 int main (int argc, char **argv) // A EFFACER

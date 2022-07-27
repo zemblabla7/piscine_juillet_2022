@@ -10,31 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// NE MARCHE PAS
+
 #include <stdlib.h>
-#include <stdio.h>
 
-int	*ft__ultimate_range(int **range,int min, int max)
+int ft_ultimate_range(int **range, int min, int max)
 {
-    int	i;
-	int	len;
+    int     i;
+    int     c;
 
-	i = 0;
-	len = max - min;
-	if (len < 0)
-	{
-		*range = NULL;
-		return (0);
-	}
-	*range = malloc(sizeof(int) * len);
-	if (!range)
-		return (-1);
     i = min;
-	while (i < max)
-	{
-		(*range)[i] = i;
-		i++;
-	}
-	return (len);
+    c = 0;
+    range = malloc(sizeof(int) * (max - min));
+    if (!(range = malloc(sizeof(int) * (max - min))))
+        return (-1);
+    if (min >= max)
+    {
+        //range = NULL; // ?
+        return (0);
+    }
+    while (i < max)
+    {
+        *range[c] = i;
+        i++;
+        c++;
+    }
+    return (max - min);
 }
 
 #include <stdio.h>

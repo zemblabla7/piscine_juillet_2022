@@ -66,6 +66,7 @@ void        ft_split (char *str, char *charset)
         ft_fill_tab(tab, str, charset, i++);
 }
 
+/*
 #include <stdio.h>
 
 int main(int argc, char **argv) // NE PAS ENVOYER LE MAIN
@@ -82,4 +83,4 @@ int main(int argc, char **argv) // NE PAS ENVOYER LE MAIN
         i++;
     }
     return(0);
-}
+}*/

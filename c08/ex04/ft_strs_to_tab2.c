@@ -14,12 +14,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int     ft_strlen(char *str)
+int     ft_strlen(char *av)
 {
     int i;
     
     i = 0;
-    while (str[i])
+    while (av[i])
     {
         i++;
     }
@@ -32,9 +32,6 @@ char	*ft_strcpy(char *src)
     char    *copy;
 
 	i = 0;
-	copy = malloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!copy)
-		return (NULL);
 	while (src[i] != '\0')
 	{
 		copy[i] = src[i];
@@ -83,7 +80,7 @@ void	ft_print(struct s_stock_str *param) // A EFFACER
 	i = 0;
 	while (param[i].str)
 	{
-		ft_putstr(param[i].str);
+		ft_putstr(param[i].str); // j ai ni putsrt ni putnbr mais plus de place trop de fonctions
 		ft_putstr("\n");
 		ft_putnbr(param[i].size);
 		ft_putstr("\n");
@@ -93,15 +90,14 @@ void	ft_print(struct s_stock_str *param) // A EFFACER
 	}
 }
 
-struct s_stock_str *ft_strs_to_tab(int ac, char **av)
+t_stock_str *ft_strs_to_tab(int ac, char **av)
 {
     t_stock_str     *tab;
     int     i;
 
     tab = malloc(sizeof(t_stock_str) * (ac + 1));
-	//t_stock_str *tab = malloc(sizeof(t_stock_str) * (ac + 1));
-	if (!tab)
-		return (NULL);
+    if (tab == NULL)
+        return (NULL);
     i = 0;
     while (i < ac)
     {
@@ -112,7 +108,8 @@ struct s_stock_str *ft_strs_to_tab(int ac, char **av)
     }
     tab[i].str = 0;
     return (tab);
-	free(tab);
+    ft_print(tab); // A EFFACER
+    free(tab);
 }
 
 int main (int argc, char **argv) // A EFFACER
@@ -122,17 +119,8 @@ int main (int argc, char **argv) // A EFFACER
     i = 1;
     while (i < argc)
     {
-        ft_print(ft_strs_to_tab(argc, &argv[i]));
+        ft_strs_to_tab(argc, &argv[i]);
         i++;
     }
     return (0);
 }
-
-/*
-int main ()
-{
-	char **argv;
-	*argv[8] = "carolina";
-	ft_print(ft_strs_to_tab(2, argv));
-	return 0;
-} */ // IMPORTANT DE COMPRENDRE POURQUOI CA MARCHE PAS POUR POUVOIR UTILISER GDB

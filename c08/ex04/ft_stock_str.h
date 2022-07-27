@@ -1,8 +1,7 @@
 //NE PAS RENDRE CE FICHIER
 
-#ifndef ft_strs_to_tab
-
-#define ft_strs_to_tab
+#ifndef FT_STOCK_STR_H
+# define FT_STOCK_STR_H
 
 typedef struct s_stock_str
 {

@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 
 int     ft_is_separator(char c, char *charset)
 {
@@ -29,42 +31,46 @@ int		ft_count_words(char *str, char *charset)
 	return (words);
 }
 
-int    ft_fill_tab(char **tab, char *str, char *charset, int idx_l)
+char **ft_split(char *str, char *charset)
 {
-	int		w;
-	int		i;
-	int		j;
+    if (str[0] == '\0')
+        return (NULL);
+    // si charset vide on return NULL aussi?
+    
+    int     i;
+    int     j;
+    char     **tab;
+    int     w;
+    int     l;
+    int words;
 
-	i = 0;
-	w = -1;	
-	while (str[i])
+    words = ft_count_words(str, charset);
+    w = -1;
+    i = 0;
+    j = 0;
+    l = 0;
+    tab = (char**)malloc(sizeof(char*) * (words + 1)); // pour la premiere dimension du tableau
+    while (str[i])
 	{
 		if (ft_is_separator(str[i], charset) == 1)
 			i++;
 		else
 		{
-			tab[w] = malloc(sizeof(char) * j); // pour la deuxieme dimension du tableau // mais du coup on alloue pas la mémoire avant la première fois qu'on l'utilie dans la boucle. 
+            l = 0;
 			j = 0;
 			while (ft_is_separator(str[i + j], charset) == 0 || str[i + j] == '\0')
             {  
-                tab[w] = str[i + j];
+                tab[w][l] = str[i + j];
                 j++;
+                l++;
             }
             printf("%d", j); // effacer
+            //tab[w] = malloc(sizeof(char) * j); // pour la deuxieme dimension du tableau
             i = i + j;
             w++;
         }
     }
-	return (tab);
-}
-
-void        ft_split (char *str, char *charset)
-{
-	char	**tab;
-	tab = malloc(sizeof(char) * (ft_count_words + 1)); // +1 pour le null byte // malloc pour la premiere dimension du tableau
-	// finir de remplir cette fonction et de voir quoi envoyer à ft_fill_tab (idx_l est le w je pense donc il faudrait peut etre rajouter un while (w < word_count))
-
-    ft_fill_tab(tab, str, charset, ft_count_words(str, charset));
+    return (tab);
 }
 
 int main(int argc, char **argv) // NE PAS ENVOYER LE MAIN

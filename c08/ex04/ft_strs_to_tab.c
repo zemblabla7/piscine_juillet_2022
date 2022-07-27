@@ -12,6 +12,7 @@
 
 #include "ft_stock_str.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 int     ft_strlen(char *av)
 {
@@ -40,7 +41,56 @@ char	*ft_strcpy(char *src)
 	return (copy);
 }
 
-struct s_stock_str *ft_strs_to_tab(int ac, char **av)
+void	ft_putstr(char *str) // A EFFACER
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+
+void	ft_putchar(char c) // A EFFACER
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb) // A EFFACER
+{
+	unsigned int	nbr;
+
+	nbr = nb;
+	if (nb < 0)
+	{
+		nbr = nb * -1;
+		ft_putchar('-');
+	}
+	if (nbr > 9)
+		ft_putnbr(nbr / 10);
+	ft_putchar(nbr % 10 + 48);
+}
+
+void	ft_print(struct s_stock_str *param) // A EFFACER
+{
+	int	i;
+
+	i = 0;
+	while (param[i].str)
+	{
+		ft_putstr(param[i].str); // j ai ni putsrt ni putnbr mais plus de place trop de fonctions
+		ft_putstr("\n");
+		ft_putnbr(param[i].size);
+		ft_putstr("\n");
+		ft_putstr(param[i].copy);
+		ft_putstr("\n");
+		i++;
+	}
+}
+
+t_stock_str *ft_strs_to_tab(int ac, char **av)
 {
     t_stock_str     *tab;
     int     i;
@@ -58,25 +108,8 @@ struct s_stock_str *ft_strs_to_tab(int ac, char **av)
     }
     tab[i].str = 0;
     return (tab);
-    ft_print(tab);
+    ft_print(tab); // A EFFACER
     free(tab);
-}
-
-void				ft_print(struct s_stock_str *param)
-{
-	int	i;
-
-	i = 0;
-	while (param[i].str)
-	{
-		ft_putstr(param[i].str); // j ai ni putrt ni putnbr mais plus de place trop de fonctions
-		ft_putstr("\n");
-		ft_putnbr(param[i].size);
-		ft_putstr("\n");
-		ft_putstr(param[i].copy);
-		ft_putstr("\n");
-		i++;
-	}
 }
 
 int main (int argc, char **argv) // A EFFACER
@@ -86,7 +119,7 @@ int main (int argc, char **argv) // A EFFACER
     i = 1;
     while (i < argc)
     {
-        ft_strs_to_tab(argc, argv[i]);
+        ft_strs_to_tab(argc, &argv[i]);
         i++;
     }
     return (0);

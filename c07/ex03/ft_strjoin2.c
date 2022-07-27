@@ -13,20 +13,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <unistd.h>
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
 char    *ft_strjoin(int size, char **strs, char *sep)
 {
     int     i;
@@ -36,10 +22,29 @@ char    *ft_strjoin(int size, char **strs, char *sep)
 
     if (size == 0)
         return (NULL);
-    i = 0;
-    string = malloc(sizeof(char) * ft_strlen(sep));
-    while (i++ < size - 1) // car pas de separateur apres le dernier mot et size = argc
-        string = string + ft_strlen(strs[i]);
+
+ // MALLOC
+    i = 1;
+    c = 0;
+    while (strs[i]) // ou while (i < size) puisque size = nombre de chaines dans strs
+    {
+        j = 0;
+        while (strs[i][j])
+        {
+            c++;
+            j++;
+        }
+        j = 0;
+        while (sep[j] && i != (size - 1))
+        {
+            c++;
+            j++;
+        }
+        i++;
+    }
+    string = malloc(sizeof(char) * (c + 1)); // +1 pour le null byte \0
+
+ // fonction
     i = 1;
     c = 0;
     while (i < size)

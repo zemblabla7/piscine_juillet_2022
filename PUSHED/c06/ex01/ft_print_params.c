@@ -1,22 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: casomarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 13:40:21 by casomarr          #+#    #+#             */
-/*   Updated: 2022/07/26 17:48:31 by casomarr         ###   ########.fr       */
+/*   Created: 2022/07/21 12:18:13 by casomarr          #+#    #+#             */
+/*   Updated: 2022/07/26 11:36:11 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#include <unistd.h>
 
-void	ft_putchar(char c);
-void	ft_swap(int *a, int *b);
-void	ft_putstr(char *str);
-int		ft_strlen(char *str);
-int		ft_strcmp(char *s1, char *s2);
+void	ft_print_params(char *param)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (param[i] != '\0')
+	{
+		write(1, &param[i], 1);
+		i++;
+	}
+	write(1, "\n", 1);
+}
+
+int	main(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	if (argc >= 1)
+	{
+		while (i < argc)
+		{
+			ft_print_params(argv[i]);
+			i++;
+		}
+	}
+	return (0);
+}

@@ -44,6 +44,7 @@ char	*ft_strcpy(char *src)
 	return (copy);
 }
 
+/*
 void	ft_putstr(char *str) // A EFFACER
 {
 	int	i;
@@ -92,6 +93,7 @@ void	ft_print(struct s_stock_str *param) // A EFFACER
 		i++;
 	}
 }
+*/
 
 struct s_stock_str *ft_strs_to_tab(int ac, char **av)
 {
@@ -99,7 +101,6 @@ struct s_stock_str *ft_strs_to_tab(int ac, char **av)
     int     i;
 
     tab = malloc(sizeof(t_stock_str) * (ac + 1));
-	//t_stock_str *tab = malloc(sizeof(t_stock_str) * (ac + 1));
 	if (!tab)
 		return (NULL);
     i = 0;
@@ -115,18 +116,12 @@ struct s_stock_str *ft_strs_to_tab(int ac, char **av)
 	free(tab);
 }
 
+/*
 int main (int argc, char **argv) // A EFFACER
 {
-    int i;
-    
-    i = 1;
-    while (i < argc)
-    {
-        ft_print(ft_strs_to_tab(argc, &argv[i]));
-        i++;
-    }
+    ft_print(ft_strs_to_tab(argc, argv));
     return (0);
-}
+} */
 
 /*
 int main ()
